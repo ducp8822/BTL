@@ -1,8 +1,10 @@
-#ifndef _DEFS__H
-#define _DEFS__H
+#ifndef defs_H_
+#define defs_H_
 
-const int SCREEN_WIDTH = 800;
+
+const int SCREEN_WIDTH = 1200;
 const int SCREEN_HEIGHT = 600;
-const char* WINDOW_TITLE = "Hello World!";
+#define WINDOW_TITLE  "GAME"
 
-#endif
+#endif // defs_H
+

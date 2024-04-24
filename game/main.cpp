@@ -1,70 +1,53 @@
-#include <iostream>
+
 #include <SDL.h>
-#include <SDL_image.h>
-#include "graphics.h"
-#include "defs.h"
+#include <stdio.h>
 
-using namespace std;
+//Screen dimension constants
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 
-void waitUntilKeyPressed()
+int main( int argc, char* args[] )
 {
-    SDL_Event e;
-    while (true) {
-        if ( SDL_PollEvent(&e) != 0 &&
-             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT) )
-            return;
-        SDL_Delay(100);
-    }
-}
-/*
-int madfgdgin(int argc, char *argv[])
-{
-    SDL_Window* window = initSDL(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
-    SDL_Renderer* renderer = createRenderer(window);
+	//The window we'll be rendering to
+	SDL_Window* window = NULL;
 
-    SDL_Texture* background = loadTexture("bikiniBottom.jpg", renderer);
-    SDL_RenderCopy( renderer, background, NULL, NULL);
+	//The surface contained by the window
+	SDL_Surface* screenSurface = NULL;
 
-    SDL_RenderPresent( renderer );
-    waitUntilKeyPressed();
+	//Initialize SDL
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	{
+		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+	}
+	else
+	{
+		//Create window
+		window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		if( window == NULL )
+		{
+			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+		}
+		else
+		{
+			//Get window surface
+			screenSurface = SDL_GetWindowSurface( window );
 
-    SDL_Texture* spongeBob = loadTexture("Spongebob.png", renderer);
-    renderTexture(spongeBob, 200, 200, renderer);
+			//Fill the surface white
+			SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
 
-    SDL_RenderPresent( renderer );
-    waitUntilKeyPressed();
+			//Update the surface
+			SDL_UpdateWindowSurface( window );
 
-    SDL_DestroyTexture( spongeBob );
-    spongeBob = NULL;
-    SDL_DestroyTexture( background );
-    background = NULL;
+            //Hack to get window to stay up
+            SDL_Event e; bool quit = false; while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+		}
+	}
 
-    quitSDL(window, renderer);
-    return 0;
-}*/
+	//Destroy window
+	SDL_DestroyWindow( window );
 
-int main(int argc, char *argv[])
-{
-    Graphics graphics;
-    graphics.init();
+	//Quit SDL subsystems
+	SDL_Quit();
 
-    SDL_Texture* background = graphics.loadTexture("anh2.jpeg");
-    graphics.prepareScene(background);
-
-    graphics.presentScene();
-    waitUntilKeyPressed();
-
-    SDL_Texture* spongeBob = graphics.loadTexture("anh1.jpg");
-    graphics.renderTexture(spongeBob, 200, 200);
-
-	graphics.presentScene();
-	waitUntilKeyPressed();
-
-	SDL_DestroyTexture( spongeBob );
-    spongeBob = NULL;
-    SDL_DestroyTexture( background );
-    background = NULL;
-
-    graphics.quit();
-    return 0;
+	return 0;
 }
