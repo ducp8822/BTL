@@ -4,7 +4,6 @@
 
 #include "graphics.h"
 
-
 void Graphics::logErrorAndExit(const char* msg, const char* error)
 {
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "%s: %s", msg, error);
@@ -34,16 +33,20 @@ void Graphics::init() {
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
-void Graphics::prepareScene(SDL_Texture * background)
-{
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy( renderer, background, NULL, NULL);
-}
+void Graphics::prepareScene()
+    {
+        SDL_RenderClear(renderer);
+    }
 
-void Graphics::presentScene()
-{
-    SDL_RenderPresent(renderer);
-}
+	void Graphics::prepareScene(SDL_Texture * background)
+    {
+        SDL_RenderClear(renderer);
+    }
+
+    void Graphics::presentScene()
+    {
+        SDL_RenderPresent(renderer);
+    }
 
 SDL_Texture* Graphics::loadTexture(const char *filename)
 {
@@ -56,7 +59,28 @@ SDL_Texture* Graphics::loadTexture(const char *filename)
     return texture;
 }
 
+void Graphics::renderTexture(SDL_Texture *texture, int x, int y)
+{
+    SDL_Rect dest;
 
+    dest.x = x;
+    dest.y = y;
+    SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
+
+    SDL_RenderCopy(renderer, texture, NULL, &dest);
+}
+
+void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
+{
+    SDL_Rect dest;
+
+    dest.x = x;
+    dest.y = y;
+    dest.w = src->w;
+    dest.h = src->h;
+
+    SDL_RenderCopy(renderer, texture, src, &dest);
+}
 
 void Graphics::quit()
 {
