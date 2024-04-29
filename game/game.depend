@@ -1,25 +1,27 @@
 # depslib dependency file v1.0
-1714006347 source:d:\c++\btl\game\graphics.cpp
+1714400075 source:d:\c++\btl\game\graphics.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	"graphics.h"
 
-1714006347 d:\c++\btl\game\graphics.h
+1714377021 d:\c++\btl\game\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
+	"lib.h"
 
-1714301798 d:\c++\btl\game\defs.h
+1714407665 d:\c++\btl\game\defs.h
 
 1714006252 d:\c++\btl\game\game.h
 
-1714301748 source:d:\c++\btl\game\main.cpp
+1714407062 source:d:\c++\btl\game\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
-	"graphics.h"
 	"defs.h"
+	"LTexture.h"
+	"graphics.h"
 
 1713972798 source:d:\c++\btl\game\box.cpp
 	<iostream>
@@ -32,7 +34,8 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1714297114 source:d:\c++\btl\game\ltexture.cpp
+1714407106 source:d:\c++\btl\game\ltexture.cpp
+	"LTexture.h"
 
 1714298592 source:d:\c++\btl\game\ltime.cpp
 	"LTime.h"
@@ -67,4 +70,25 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
+
+1714408137 d:\c++\btl\game\ltexture.h
+	"lib.h"
+	"defs.h"
+	"Global.h"
+
+1714409146 d:\c++\btl\game\global.h
+	"Lib.h"
+	"LTexture.h"
+
+1714408289 source:d:\c++\btl\game\global.cpp
+	"Global.h"
+
+1714408821 source:d:\c++\btl\game\lfile.cpp
+	"Lfile.h"
+
+1714407838 d:\c++\btl\game\lfile.h
+	"lib.h"
+	"defs.h"
+	"Global.h"
+	<SDL.h>
 

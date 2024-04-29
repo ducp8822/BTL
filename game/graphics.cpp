@@ -4,6 +4,7 @@
 
 #include "graphics.h"
 
+
 void Graphics::logErrorAndExit(const char* msg, const char* error)
 {
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "%s: %s", msg, error);
@@ -83,7 +84,6 @@ void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
 
     SDL_RenderCopy(renderer, texture, src, &dest);
 }
-
 void Graphics::quit()
 {
     IMG_Quit();

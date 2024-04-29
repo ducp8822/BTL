@@ -32,11 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="box.cpp" />
-		<Unit filename="box.h" />
+		<Unit filename="Global.cpp" />
+		<Unit filename="Global.h" />
+		<Unit filename="LTexture.cpp" />
+		<Unit filename="LTexture.h" />
+		<Unit filename="Lfile.cpp" />
+		<Unit filename="Lfile.h" />
 		<Unit filename="defs.h" />
-		<Unit filename="graphics.cpp" />
-		<Unit filename="graphics.h" />
 		<Unit filename="lib.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

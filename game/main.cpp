@@ -1,8 +1,8 @@
-#include <iostream>
-#include <SDL.h>
-#include <SDL_image.h>
-#include "graphics.h"
+#include "lib.h"
 #include "defs.h"
+#include "LTexture.h"
+#include "Global.h"
+#include "Lfile.h"
 
 using namespace std;
 
@@ -18,113 +18,54 @@ void waitUntilMousePressed()
 }
 int main(int argc, char *argv[])
 {
-    Graphics graphics;
-    graphics.init();
 
-    // load background1
-    SDL_Texture *background1= graphics.loadTexture("images/background1.png");
-    graphics.prepareScene(background1);
-    graphics.presentScene();
-    SDL_DestroyTexture(background1);
-    waitUntilMousePressed();
+    if( !init() )
+	{
+		cout << "Failed to initialize!" << endl;
+	}
+	else
+	{
+		//Load media
+		if( !loadMedia() )
+		{
+			cout << "Failed to load media!" << endl;
+		}
+		else
+		{
+			//Main loop flag
+			bool quit = false;
 
+			//Event handler
+			SDL_Event e;
 
-    // load background2
-    SDL_Texture *background2= graphics.loadTexture("images/background2.png");
-    graphics.prepareScene(background2);
-    graphics.presentScene();
-    SDL_DestroyTexture(background2);
-    waitUntilMousePressed();
+			//While application is running
+			while( !quit )
+			{
+				//Handle events on queue
+				while( SDL_PollEvent( &e ) != 0 )
+				{
+					//User requests quit
+					if( e.type == SDL_QUIT || e.type == SDL_MOUSEBUTTONDOWN)
+					{
+						quit = true;
+					}
+				}
 
-    //load cat
-    SDL_Texture *cat= graphics.loadTexture("images/cat.png");
-    graphics.renderTexture(cat,100,200);
-    graphics.presentScene();
-    SDL_DestroyTexture(cat);
-    waitUntilMousePressed();
-    graphics.prepareScene();
+				//Clear screen
+				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+				SDL_RenderClear( gRenderer );
 
-    // load dog
-    SDL_Texture *dog= graphics.loadTexture("images/dog.png");
-    graphics.renderTexture(dog,400,200);
-    graphics.presentScene();
-    SDL_DestroyTexture(dog);
-    waitUntilMousePressed();
+				//Render background texture to screen
+				background1.render( 0, 0 );
 
-    //load dog2
-    SDL_Texture *dog2= graphics.loadTexture("images/dog2.png");
-    graphics.renderTexture(dog2,300,200);
-    graphics.presentScene();
-    SDL_DestroyTexture(dog2);
-    waitUntilMousePressed();
-    graphics.prepareScene();
+				//Update screen
+				SDL_RenderPresent( gRenderer );
+			}
+		}
+	}
 
-    //load gameover
-    SDL_Texture *gameover= graphics.loadTexture("images/gameover.png");
-    graphics.renderTexture(gameover,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(gameover);
-    waitUntilMousePressed();
-    graphics.prepareScene();
+	//Free resources and close SDL
+	close();
 
-    //load Gun
-    SDL_Texture *Gun= graphics.loadTexture("images/Gun.png");
-    graphics.renderTexture(Gun,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(Gun);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load gun_fire_effect
-    SDL_Texture *gun_fire_effect= graphics.loadTexture("images/gun_fire_effect.png");
-    graphics.renderTexture(gun_fire_effect,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(gun_fire_effect);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load pate
-    SDL_Texture *pate= graphics.loadTexture("images/pate.png");
-    graphics.renderTexture(pate,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(pate);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load music-on
-    SDL_Texture *music_on= graphics.loadTexture("images/music-on.png");
-    graphics.renderTexture(music_on,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(music_on);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load score
-    SDL_Texture *score= graphics.loadTexture("images/score.png");
-    graphics.renderTexture(score,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(score);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load right_arrow
-    SDL_Texture *right_arrow= graphics.loadTexture("images/right_arrow.png");
-    graphics.renderTexture(right_arrow,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(right_arrow);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-    //load music-off
-    SDL_Texture *music_off= graphics.loadTexture("images/music-off.png");
-    graphics.renderTexture(music_off,300,400);
-    graphics.presentScene();
-    SDL_DestroyTexture(music_off);
-    waitUntilMousePressed();
-    graphics.prepareScene();
-
-
-
-    return 0;
-    graphics.quit();
+	return 0;
 }
