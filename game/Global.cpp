@@ -8,4 +8,6 @@ SDL_Renderer* gRenderer = NULL;
 // The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 LTexture background1;
+LTexture background2;
+LTexture gameover;
 

@@ -9,5 +9,9 @@ extern SDL_Renderer* gRenderer;
 // The window we'll be rendering to
 extern SDL_Window* gWindow;
 extern LTexture background1;
+extern LTexture background2;
+extern LTexture gameover;
+
+
 
 #endif // GLOBAL_H_

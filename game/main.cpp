@@ -60,6 +60,8 @@ int main(int argc, char *argv[])
                 background1.render(0, 0);
                 //Update screen
                 SDL_RenderPresent(gRenderer);
+
+
             }
         }
     }

@@ -58,9 +58,80 @@ bool loadMedia()
 	//Load background1
 	if( !background1.loadFromFile( "images/background1.png" ) )
 	{
-		cout << "Failed to load background image" << endl;
+		cout << "Failed to load background1 image" << endl;
 		success = false;
 	}
+
+	//Load background2
+	if( !background2.loadFromFile( "images/background2.png" ) )
+	{
+		cout << "Failed to load background2 image" << endl;
+		success = false;
+	}
+
+
+	/*//Load cat
+	if( !cat.loadFromFile( "images/cat.png" ) )
+	{
+		cout << "Failed to load cat image" << endl;
+		success = false;
+	}
+
+
+	//Load cat_cry
+	if( !cat_cry.loadFromFile( "images/cat_cry.png" ) )
+	{
+		cout << "Failed to load cat_cry image" << endl;
+		success = false;
+	}
+
+
+	//Load dan
+	if( !dan.loadFromFile( "images/dan.png" ) )
+	{
+		cout << "Failed to load dan image" << endl;
+		success = false;
+	}
+
+
+	//Load dog1
+	if( !dog1.loadFromFile( "images/dog1.png" ) )
+	{
+		cout << "Failed to load dog1 image" << endl;
+		success = false;
+	}
+
+
+	//Load dog2
+	if( !dog2.loadFromFile( "images/dog2.png" ) )
+	{
+		cout << "Failed to load dog2 image" << endl;
+		success = false;
+	}*/
+
+
+	//Load gameover
+	if( !gameover.loadFromFile( "images/gameover.png" ) )
+	{
+		cout << "Failed to load gameover image" << endl;
+		success = false;
+	}
+
+
+	/*/Load gun
+	if( !gun.loadFromFile( "images/gun.png" ) )
+	{
+		cout << "Failed to load gun image" << endl;
+		success = false;
+	}
+
+
+	//Load gun_fire_effect
+	if( !gun_fire_effect.loadFromFile( "images/gun_fire_effect.png" ) )
+	{
+		cout << "Failed to load gun_fire_effect image" << endl;
+		success = false;
+	}*/
 
 	return success;
 }
