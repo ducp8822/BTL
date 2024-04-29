@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="box.cpp" />
+		<Unit filename="box.h" />
 		<Unit filename="defs.h" />
 		<Unit filename="graphics.cpp" />
 		<Unit filename="graphics.h" />

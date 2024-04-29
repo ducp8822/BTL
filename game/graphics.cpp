@@ -32,15 +32,17 @@ void Graphics::init() {
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
-
-void Graphics::prepareScene()
+    void Graphics::prepareScene()
     {
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
+
     }
 
 	void Graphics::prepareScene(SDL_Texture * background)
     {
         SDL_RenderClear(renderer);
+        SDL_RenderCopy( renderer, background, NULL, NULL);
     }
 
     void Graphics::presentScene()

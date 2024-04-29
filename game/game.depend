@@ -1,24 +1,70 @@
 # depslib dependency file v1.0
-1713966154 source:d:\c++\btl\game\graphics.cpp
+1714006347 source:d:\c++\btl\game\graphics.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	"graphics.h"
 
-1713943483 d:\c++\btl\game\graphics.h
+1714006347 d:\c++\btl\game\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
 
-1713941499 d:\c++\btl\game\defs.h
+1714301798 d:\c++\btl\game\defs.h
 
-1713942625 d:\c++\btl\game\game.h
+1714006252 d:\c++\btl\game\game.h
 
-1713944783 source:d:\c++\btl\game\main.cpp
+1714301748 source:d:\c++\btl\game\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	"graphics.h"
 	"defs.h"
-	"game.h"
+
+1713972798 source:d:\c++\btl\game\box.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"box.h"
+
+1713972754 d:\c++\btl\game\box.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1714297114 source:d:\c++\btl\game\ltexture.cpp
+
+1714298592 source:d:\c++\btl\game\ltime.cpp
+	"LTime.h"
+
+1714298628 d:\c++\btl\game\ltime.h
+	"Lib.h"
+
+1713941568 d:\c++\btl\game\lib.h
+	<iostream>
+	<fstream>
+	<iomanip>
+	<sstream>
+	<assert.h>
+	<algorithm>
+	<math.h>
+	<string.h>
+	<limits.h>
+	<numeric>
+	<chrono>
+	<random>
+	<functional>
+	<tuple>
+	<vector>
+	<queue>
+	<stack>
+	<map>
+	<set>
+	<array>
+	<bitset>
+	<unordered_map>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 
