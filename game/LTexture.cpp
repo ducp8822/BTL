@@ -1,5 +1,5 @@
 #include "LTexture.h"
-
+#include "Global.h"
 LTexture::LTexture()
 {
 	//Initialize

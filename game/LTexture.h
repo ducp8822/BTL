@@ -1,38 +1,41 @@
-#ifndef LTexture_H_
-#define LTexture_H_
+#ifndef LTEXTURE_H_
+#define LTEXTURE_H_
+
 #include "lib.h"
 #include "defs.h"
-#include "Global.h"
+
+
 //Texture wrapper class
+using namespace std;
 class LTexture
 {
-	public:
-		//Initializes variables
-		LTexture();
+public:
+    //Initializes variables
+    LTexture();
 
-		//Deallocates memory
-		~LTexture();
+    //Deallocates memory
+    ~LTexture();
 
-		//Loads image at specified path
-		bool loadFromFile( std::string path );
+    //Loads image at specified path
+    bool loadFromFile(std::string path);
 
-		//Deallocates texture
-		void free();
+    //Deallocates texture
+    void free();
 
-		//Renders texture at given point
-		void render( int x, int y );
+    //Renders texture at given point
+    void render(int x, int y);
 
-		//Gets image dimensions
-		int getWidth();
-		int getHeight();
+    //Gets image dimensions
+    int getWidth();
+    int getHeight();
 
-	private:
-		//The actual hardware texture
-		SDL_Texture* mTexture;
+private:
+    //The actual hardware texture
+    SDL_Texture* mTexture;
 
-		//Image dimensions
-		int mWidth;
-		int mHeight;
+    //Image dimensions
+    int mWidth;
+    int mHeight;
 };
 
-#endif // LTexture_H_
+#endif // LTEXTURE_H_
