@@ -16,6 +16,7 @@ void waitUntilMousePressed()
         SDL_Delay(10);
     }
 }
+LTexture background1;
 int main(int argc, char *argv[])
 {
 
@@ -57,7 +58,6 @@ int main(int argc, char *argv[])
 
 				//Render background texture to screen
 				background1.render( 0, 0 );
-
 				//Update screen
 				SDL_RenderPresent( gRenderer );
 			}

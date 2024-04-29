@@ -1,7 +1,4 @@
 #include "Lfile.h"
-        SDL_Window* gWindow = NULL;
-        SDL_Renderer* gRenderer = NULL;
-
 bool init()
 {
 	//Initialize SDL

@@ -1,6 +1,6 @@
 #ifndef GLOBAL_H_
 #define GLOBAL_H_
-#include "Lib.h"
+#include "lib.h"
 #include "LTexture.h"
 using namespace std;
 
@@ -10,5 +10,4 @@ extern SDL_Renderer* gRenderer;
 // The window we'll be rendering to
 extern SDL_Window* gWindow;
 extern LTexture background1;
-
 #endif // GLOBAL_H_
