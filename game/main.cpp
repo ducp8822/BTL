@@ -51,16 +51,15 @@ int main(int argc, char *argv[])
                         quit = true;
                     }
                 }
-
+                SDL_Rect clipRect = { 0, 0, 100, 100 };
                 //Clear screen
                 SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
                 SDL_RenderClear(gRenderer);
 
                 //Render background texture to screen
-                background1.render(0, 0);
+                background1.render(0, 0, &clipRect);
                 //Update screen
                 SDL_RenderPresent(gRenderer);
-
 
             }
         }
