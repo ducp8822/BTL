@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Enermy.cpp" />
+		<Unit filename="Enermy.h" />
 		<Unit filename="Global.cpp" />
 		<Unit filename="Global.h" />
 		<Unit filename="LTexture.cpp" />

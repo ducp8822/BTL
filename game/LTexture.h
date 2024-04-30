@@ -37,6 +37,21 @@ public:
     //Gets image dimensions
     int getWidth();
     int getHeight();
+    // Set velocity
+	void setVelocity(int vx, int vy);
+
+	// Get velocity in x and y direction
+	int getXVelocity();
+	int getYVelocity();
+	void checkvelocity();
+
+	// Get position
+	int getX();
+	int getY();
+
+	void move();
+
+	void setPos(int x, int y);
 
 private:
     //The actual hardware texture
@@ -45,6 +60,9 @@ private:
     //Image dimensions
     int mWidth;
     int mHeight;
+
+    int mPosX, mPosY;
+	int mVelX, mVelY;
 };
 
 #endif // LTEXTURE_H_

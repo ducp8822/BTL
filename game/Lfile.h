@@ -3,6 +3,7 @@
 #include "lib.h"
 #include "defs.h"
 #include "Global.h"
+
 //Starts up SDL and creates window
 bool init();
 

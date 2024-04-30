@@ -2,6 +2,7 @@
 #define GLOBAL_H_
 #include "LTexture.h"
 #include "lib.h"
+#include "Enermy.h"
 using namespace std;
 //The renderer we'll be using
 extern SDL_Renderer* gRenderer;
@@ -11,7 +12,9 @@ extern SDL_Window* gWindow;
 extern LTexture background1;
 extern LTexture background2;
 extern LTexture gameover;
-
-
+extern LTexture cat;
+extern Enermy dog1;
+extern Enermy dog2;
+extern Uint32 tmp_time;
 
 #endif // GLOBAL_H_
