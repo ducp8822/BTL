@@ -141,7 +141,7 @@ void Enermy::move()
 	{
 		renew_flag = false;
 		mPosX = rand() % (SCREEN_WIDTH - mWidth);
-		mPosY =  mHeight;
+		mPosY =  -2*mHeight;
 	}
 }
 void Enermy::setPos(int x,int y)

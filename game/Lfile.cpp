@@ -74,6 +74,17 @@ bool loadMedia()
 		cout << "Failed to load cat image" << endl;
 		success = false;
 	}
+	//Load dog1
+	if( !dog1.loadFromFile( "images/dog1.png" ) )
+	{
+		cout << "Failed to load dog1 image" << endl;
+		success = false;
+	}//Load dog2
+	if( !dog2.loadFromFile( "images/dog2.png" ) )
+	{
+		cout << "Failed to load dog2 image" << endl;
+		success = false;
+	}
 
 	return success;
 }
@@ -82,6 +93,7 @@ void close()
 {
 	//Free loaded images
 	background1.free();
+	cat.free();
 
 	//Destroy window
 	SDL_DestroyRenderer( gRenderer );

@@ -9,12 +9,19 @@ extern SDL_Renderer* gRenderer;
 
 // The window we'll be rendering to
 extern SDL_Window* gWindow;
+
 extern LTexture background1;
 extern LTexture background2;
 extern LTexture gameover;
 extern LTexture cat;
+
 extern Enermy dog1;
 extern Enermy dog2;
 extern Uint32 tmp_time;
+
+extern int x_mouse;
+extern int y_mouse;
+
+extern bool GAME_OVER;
 
 #endif // GLOBAL_H_
