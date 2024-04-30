@@ -15,7 +15,7 @@
 
 1714006252 d:\c++\btl\game\game.h
 
-1714414707 source:d:\c++\btl\game\main.cpp
+1714448167 source:d:\c++\btl\game\main.cpp
 	"lib.h"
 	"defs.h"
 	"LTexture.h"
@@ -71,7 +71,7 @@
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 
-1714447411 d:\c++\btl\game\ltexture.h
+1714448322 d:\c++\btl\game\ltexture.h
 	"lib.h"
 	"defs.h"
 
