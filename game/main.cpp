@@ -16,6 +16,7 @@ void waitUntilMousePressed()
         SDL_Delay(10);
     }
 }
+double degrees = 0;
 
 int main(int argc, char *argv[])
 {
@@ -46,20 +47,24 @@ int main(int argc, char *argv[])
                 while (SDL_PollEvent(&e) != 0)
                 {
                     //User requests quit
-                    if (e.type == SDL_QUIT || e.type == SDL_MOUSEBUTTONDOWN)
+                    if (e.type == SDL_QUIT)
                     {
                         quit = true;
+                    }else if(e.type == SDL_MOUSEBUTTONDOWN)
+
+                    {
+                        degrees+=60;
                     }
                 }
+
                 //Clear screen
                 SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
                 SDL_RenderClear(gRenderer);
 
                 //Render background texture to screen
-                background1.render(0, 0);
+                background1.render(0, 0,NULL,degrees,NULL,SDL_FLIP_NONE);
                 //Update screen
                 SDL_RenderPresent(gRenderer);
-
             }
         }
     }
