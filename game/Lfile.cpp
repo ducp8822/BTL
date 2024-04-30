@@ -79,10 +79,17 @@ bool loadMedia()
 	{
 		cout << "Failed to load dog1 image" << endl;
 		success = false;
-	}//Load dog2
+	}
+	//Load dog2
 	if( !dog2.loadFromFile( "images/dog2.png" ) )
 	{
 		cout << "Failed to load dog2 image" << endl;
+		success = false;
+	}
+	//Load gameover
+	if( !gameover.loadFromFile( "images/gameover.png" ) )
+	{
+		cout << "Failed to load gameover image" << endl;
 		success = false;
 	}
 

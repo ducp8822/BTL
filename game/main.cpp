@@ -6,12 +6,12 @@
 #include "Enermy.h"
 using namespace std;
 
-void waitUntilMousePressed()
+void waitUntilMouseKeyPressed()
 {
     SDL_Event e;
     while (true) {
         if (SDL_PollEvent(&e) != 0 &&
-            (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_QUIT))
+            (e.type == SDL_KEYDOWN || e.type == SDL_QUIT))
             return;
         SDL_Delay(10);
     }
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
 							SDL_GetMouseState(&x_mouse, &y_mouse);
                             if (bullet_count > 0)
                             {
-									//tmp_time = SDL_GetTicks();
+									tmp_time = SDL_GetTicks();
 									int push_x = -(x_mouse - cat.getX()) / 45 + cat.getXVelocity();
 									int push_y = -(y_mouse - cat.getY()) / 45 + cat.getYVelocity();
 									cat.setVelocity(push_x, push_y);
@@ -135,6 +135,7 @@ int main(int argc, char *argv[])
             SDL_Delay(1000);
         }
     }
+
     SDL_Delay(500);
     //Free resources and close SDL
     close();
