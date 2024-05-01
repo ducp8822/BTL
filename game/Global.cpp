@@ -22,6 +22,7 @@ Uint32 tmp_time = 0;
 Enermy dog1;
 Enermy dog2;
 Enermy treasure;
+Enermy food;
 
 bool GAME_OVER = false;
 int x_mouse = 0;

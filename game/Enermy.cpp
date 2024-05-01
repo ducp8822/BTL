@@ -159,7 +159,11 @@ int Enermy::getYVelocity()
 {
 	return mVelY;
 }
-void renew()
-{
 
+void Enermy::renew()
+{
+    renew_flag=false;
+    mPosX = (rand() % SCREEN_WIDTH );
+	mPosY = (rand() % SCREEN_HEIGHT);
 }
+

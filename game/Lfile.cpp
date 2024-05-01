@@ -116,6 +116,12 @@ bool loadMedia()
 		cout << "Failed to load gun image" << endl;
 		success = false;
 	}
+	//Load food
+	if( !food.loadFromFile( "images/food.png" ) )
+	{
+		cout << "Failed to load food image" << endl;
+		success = false;
+	}
 
 	return success;
 }

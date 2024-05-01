@@ -60,6 +60,8 @@ void initialize()
 	dog1.setPos(rand() % (SCREEN_WIDTH - dog1.getWidth()), -dog1.getHeight());
 	dog2.setPos(rand() % (SCREEN_WIDTH - dog2.getWidth()), -dog2.getHeight());
 
+    food.renew();
+
 	gun.setPos((SCREEN_WIDTH - gun.getWidth()) / 2, (SCREEN_HEIGHT - gun.getHeight()) / 2);
 	dan.setPos((SCREEN_WIDTH - dan.getWidth()) / 2 - 15, dan.getHeight() + 20);
 	treasure.setVelocity(0, 1);
@@ -99,6 +101,13 @@ void game()
 	{
 		//GAME_OVER = true;
 	}
+
+	while(checkCollision(cat,food))
+	{
+	    bullet_count+=2;
+	    food.renew();
+	}
+
 	if (GAME_OVER == true)
     {
         if (cat.loadFromFile("images/cat_cry.png") == false)
@@ -112,6 +121,7 @@ void render()
 
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
 	dog2.render(dog2.getX(), dog2.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
+	food.render(food.getX(),food.getY());
 
 	gun.render(gun.getX(), gun.getY(), NULL, angle_arrow, NULL, SDL_FLIP_NONE);
 	if (press_mouse)

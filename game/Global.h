@@ -21,6 +21,7 @@ extern LTexture gun_fire_effect;
 extern Enermy dog1;
 extern Enermy dog2;
 extern Enermy treasure;
+extern Enermy food;
 
 extern Uint32 tmp_time;
 
