@@ -43,6 +43,10 @@ bool init()
 					cout << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
                     return false;
 				}
+				if(Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048)<0)
+                {
+                    cout<<"SDL_mixer could not initialize! SDL_mixer Error: "<< Mix_GetError()<< endl;
+                }
 			}
 		}
 	}
@@ -54,6 +58,8 @@ bool loadMedia()
 {
 	//Loading success flag
 	bool success = true;
+
+	//load anh
 
 	//Load background1
 	if( !background1.loadFromFile( "images/background1.png" ) )
@@ -123,6 +129,27 @@ bool loadMedia()
 		success = false;
 	}
 
+	//load musicc
+
+	//Load food_music
+	food_music=Mix_LoadWAV("musics/food_music.wav");
+	if(food_music == NULL)
+    {
+        cout<< "Failed to load food_music" <<endl;
+    }
+    //Load gun_music
+	gun_music=Mix_LoadWAV("musics/gun_music.wav");
+	if(gun_music == NULL)
+    {
+        cout<< "Failed to load gun_music" <<endl;
+    }
+    //Load gameover_music
+	gameover_music=Mix_LoadWAV("musics/gameover_music.wav");
+	if(gameover_music == NULL)
+    {
+        cout<< "Failed to load gameover_music" <<endl;
+    }
+
 	return success;
 }
 
@@ -142,6 +169,7 @@ void close()
 
 	//Quit SDL subsystems
 	IMG_Quit();
+	Mix_Quit();
 	SDL_Quit();
 }
 

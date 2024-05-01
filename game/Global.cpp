@@ -15,7 +15,11 @@ LTexture cat;
 LTexture gun;
 LTexture dan;
 LTexture gun_fire_effect;
+LTexture music;
 
+ Mix_Chunk *gun_music=NULL;
+ Mix_Chunk *gameover_music=NULL;
+ Mix_Chunk *food_music=NULL;
 
 Uint32 tmp_time = 0;
 

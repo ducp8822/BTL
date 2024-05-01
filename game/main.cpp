@@ -76,6 +76,7 @@ void game()
 
 	if (checkCollision(cat, treasure))
 	{
+	    Mix_PlayChannel(-1,food_music,0);
 		if (treasure_armor == 0)
 		{
 			bullet_count += 5;
@@ -99,20 +100,16 @@ void game()
 
 	if (checkCollision(cat, dog1) || checkCollision(cat, dog2))
 	{
-		//GAME_OVER = true;
+		GAME_OVER = true;
 	}
 
 	while(checkCollision(cat,food))
 	{
+	    Mix_PlayChannel(-1,food_music,0);
 	    bullet_count+=2;
 	    food.renew();
 	}
 
-	if (GAME_OVER == true)
-    {
-        if (cat.loadFromFile("images/cat_cry.png") == false)
-			cout << "Failed to load cat_cry image" << endl;
-    }
 }
 
 void render()
@@ -126,6 +123,7 @@ void render()
 	gun.render(gun.getX(), gun.getY(), NULL, angle_arrow, NULL, SDL_FLIP_NONE);
 	if (press_mouse)
 	{
+	    Mix_PlayChannel(-1,gun_music,0);
 		gun_fire_effect.setPos(gun.getX() - (gun_fire_effect.getWidth() - gun.getWidth()) / 2, gun.getY() - (gun_fire_effect.getHeight() - gun.getHeight()) / 2);
 		gun_fire_effect.render(gun_fire_effect.getX(), gun_fire_effect.getY(), NULL, angle_arrow, NULL, SDL_FLIP_NONE);
 		press_mouse = false;
@@ -190,6 +188,7 @@ int main(int argc, char *argv[])
 									cat.setVelocity(push_x, push_y);
 									bullet_count--;
 									press_mouse=true;
+									cerr<<bullet_count<<endl;
                             }
 						}
 					}
@@ -197,6 +196,13 @@ int main(int argc, char *argv[])
 					game();
 					render();
 					SDL_RenderPresent(gRenderer);
+					if (GAME_OVER == true)
+                    {
+                        if (cat.loadFromFile("images/cat_cry.png") == false)
+                        cout << "Failed to load cat_cry image" << endl;
+                        Mix_PlayChannel(-1,gameover_music,0);
+                        SDL_Delay(2500);
+                    }
 					SDL_Delay(5);
             }
         }

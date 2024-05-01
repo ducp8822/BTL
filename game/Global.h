@@ -17,11 +17,17 @@ extern LTexture cat;
 extern LTexture gun;
 extern LTexture dan;
 extern LTexture gun_fire_effect;
+extern LTexture music;
 
 extern Enermy dog1;
 extern Enermy dog2;
 extern Enermy treasure;
 extern Enermy food;
+
+extern Mix_Chunk *gun_music;
+extern Mix_Chunk *gameover_music;
+extern Mix_Chunk *food_music;
+
 
 extern Uint32 tmp_time;
 
