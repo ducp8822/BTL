@@ -125,6 +125,8 @@ void close()
 	//Free loaded images
 	background1.free();
 	cat.free();
+	dog1.free();
+	dog2.free();
 
 	//Destroy window
 	SDL_DestroyRenderer( gRenderer );

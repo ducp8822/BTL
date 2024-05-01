@@ -52,7 +52,7 @@ void initialize()
     treasure_armor = 3;
 
     cat.setPos((SCREEN_WIDTH - cat.getWidth()) / 2, (SCREEN_HEIGHT - cat.getHeight()) / 2);
-	cat.setVelocity(1, 1);
+	cat.setVelocity(0, 0);
 	cat.loadFromFile("images/cat.png");
 
 	dog1.setVelocity(0, 1);
@@ -179,6 +179,7 @@ int main(int argc, char *argv[])
 									int push_y = -(y_mouse - cat.getY()) / 45 + cat.getYVelocity();
 									cat.setVelocity(push_x, push_y);
 									bullet_count--;
+									press_mouse=true;
                             }
 						}
 					}
@@ -186,8 +187,8 @@ int main(int argc, char *argv[])
 					game();
 					render();
 					SDL_RenderPresent(gRenderer);
+					SDL_Delay(5);
             }
-            SDL_Delay(1000);
         }
     }
 

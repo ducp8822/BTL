@@ -1,6 +1,5 @@
 #ifndef ENERMY__H_
 #define ENERMY__H_
-
 #include "Lib.h"
 #include "defs.h"
 
@@ -49,6 +48,7 @@ public:
 	void move();
 
 	void setPos(int x, int y);
+	void renew();
 
 private:
 	//The actual hardware texture

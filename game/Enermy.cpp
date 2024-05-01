@@ -130,8 +130,8 @@ int Enermy::getY()
 }
 void Enermy::move()
 {
-    mPosX += mVelX;
-	mPosY += mVelY;
+    mPosX += 0;
+	mPosY +=  mVelY;
 	if (mPosY > SCREEN_HEIGHT)
 	{
 		renew_flag = true;
@@ -158,4 +158,8 @@ int Enermy::getXVelocity()
 int Enermy::getYVelocity()
 {
 	return mVelY;
+}
+void renew()
+{
+
 }
