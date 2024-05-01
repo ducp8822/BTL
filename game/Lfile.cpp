@@ -92,6 +92,30 @@ bool loadMedia()
 		cout << "Failed to load gameover image" << endl;
 		success = false;
 	}
+	//Load dan
+	if( !dan.loadFromFile( "images/dan.png" ) )
+	{
+		cout << "Failed to load dan image" << endl;
+		success = false;
+	}
+	//Load treasure
+	if( !treasure.loadFromFile( "images/treasure.png" ) )
+	{
+		cout << "Failed to load treasure image" << endl;
+		success = false;
+	}
+	//Load gun_fire_effect
+	if( !gun_fire_effect.loadFromFile( "images/gun_fire_effect.png" ) )
+	{
+		cout << "Failed to load gun_fire_effect image" << endl;
+		success = false;
+	}
+	//Load gun
+	if( !gun.loadFromFile( "images/gun.png" ) )
+	{
+		cout << "Failed to load gun image" << endl;
+		success = false;
+	}
 
 	return success;
 }

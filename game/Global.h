@@ -14,9 +14,14 @@ extern LTexture background1;
 extern LTexture background2;
 extern LTexture gameover;
 extern LTexture cat;
+extern LTexture gun;
+extern LTexture dan;
+extern LTexture gun_fire_effect;
 
 extern Enermy dog1;
 extern Enermy dog2;
+extern Enermy treasure;
+
 extern Uint32 tmp_time;
 
 extern int x_mouse;
