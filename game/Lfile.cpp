@@ -46,6 +46,12 @@ bool init()
 				if(Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048)<0)
                 {
                     cout<<"SDL_mixer could not initialize! SDL_mixer Error: "<< Mix_GetError()<< endl;
+                    return false;
+                }
+                if(TTF_Init() == -1)
+                {
+                    cout<<"SDL_ttf could not initialize! SDL_ttf Error: "<<TTF_GetError()<< endl;
+                    return false;
                 }
 			}
 		}
@@ -160,6 +166,12 @@ void close()
 	cat.free();
 	dog1.free();
 	dog2.free();
+	treasure.free();
+	gun.free();
+    dan.free();
+    food.free();
+    gun_fire_effect.free();
+    gameover.free();
 
 	//Destroy window
 	SDL_DestroyRenderer( gRenderer );
@@ -167,9 +179,14 @@ void close()
 	gWindow = NULL;
 	gRenderer = NULL;
 
+    gameover_music=NULL;
+    gun_music= NULL;
+    food_music = NULL;
+
 	//Quit SDL subsystems
 	IMG_Quit();
 	Mix_Quit();
+    TTF_Quit();
 	SDL_Quit();
 }
 
