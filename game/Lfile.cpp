@@ -2,7 +2,7 @@
 bool init()
 {
 	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	if( SDL_Init( SDL_INIT_EVERYTHING) < 0 )
 	{
 		cout << "SDL couldn't ! SDL error: " << SDL_GetError() << endl;
 		return false;
