@@ -166,6 +166,11 @@ int main(int argc, char *argv[])
         SDL_Surface* icon = IMG_Load("images/popcat2_mini.png");
         SDL_Cursor* cursor = SDL_CreateColorCursor(icon, 0, 0);
         SDL_SetCursor(cursor);
+
+        //icon game
+        SDL_Surface* icon1=IMG_Load("images/logo.png");
+        SDL_SetWindowIcon(gWindow,icon1);
+
         //Load media
         if (!loadMedia())
         {
