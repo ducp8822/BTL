@@ -142,19 +142,31 @@ bool loadMedia()
 	if(food_music == NULL)
     {
         cout<< "Failed to load food_music" <<endl;
+        success=false;
     }
     //Load gun_music
 	gun_music=Mix_LoadWAV("musics/gun_music.wav");
 	if(gun_music == NULL)
     {
         cout<< "Failed to load gun_music" <<endl;
+        success=false;
     }
     //Load gameover_music
 	gameover_music=Mix_LoadWAV("musics/gameover_music.wav");
 	if(gameover_music == NULL)
     {
         cout<< "Failed to load gameover_music" <<endl;
+        success=false;
     }
+
+    //load font
+
+    gfont1=TTF_OpenFont("fonts/font1.ttf",100);
+        if(gfont1 == nullptr)
+        {
+            cout<<"Load font %s"<<TTF_GetError()<<endl;
+            success=false;
+        }
 
 	return success;
 }

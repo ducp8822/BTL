@@ -16,6 +16,7 @@ LTexture gun;
 LTexture dan;
 LTexture gun_fire_effect;
 LTexture music;
+LTexture font1;
 
  Mix_Chunk *gun_music=NULL;
  Mix_Chunk *gameover_music=NULL;
@@ -27,6 +28,8 @@ Enermy dog1;
 Enermy dog2;
 Enermy treasure;
 Enermy food;
+
+TTF_Font *gfont1;
 
 bool GAME_OVER = false;
 int x_mouse = 0;

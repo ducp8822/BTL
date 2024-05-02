@@ -89,6 +89,27 @@ void LTexture::setAlpha(Uint8 alpha)
 	SDL_SetTextureAlphaMod(mTexture, alpha);
 }
 
+SDL_Texture* LTexture::renderText(const char* text,TTF_Font* font, SDL_Color textColor)
+{
+    SDL_Surface* textSurface= TTF_RenderText_Solid(font,text,textColor);
+    if(textSurface==NULL)
+    {
+        cout<<"Render text surface %s"<<TTF_GetError()<<endl;
+        return nullptr;
+    }
+    SDL_Texture *texture=SDL_CreateTextureFromSurface(gRenderer,textSurface);
+    {
+        if(texture==NULL)
+        {
+            cout<< "Create texture from text %s"<<SDL_GetError()<<endl;
+        }
+        SDL_FreeSurface(textSurface);
+    }
+    mWidth =100;
+    mHeight=100;
+    return texture;
+}
+
 void LTexture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
 	//Set rendering space and render to screen

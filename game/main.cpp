@@ -116,6 +116,11 @@ void render()
 {
     background2.render(0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
 
+    SDL_Color color={255,255,255,255};
+    font1.setTexture(font1.renderText("Hello",gfont1,color));
+	font1.render(100,100);
+
+
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
 	dog2.render(dog2.getX(), dog2.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
 	food.render(food.getX(),food.getY());
@@ -133,6 +138,8 @@ void render()
 
 	cat.render(cat.getX(), cat.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
     dan.render(dan.getX(), dan.getY());
+
+
 	if (GAME_OVER) {
 		gameover.render((SCREEN_WIDTH - gameover.getWidth()) / 2, (SCREEN_HEIGHT - gameover.getHeight()) / 2, NULL, 0, NULL, SDL_FLIP_NONE);
 	}

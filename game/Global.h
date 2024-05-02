@@ -18,6 +18,7 @@ extern LTexture gun;
 extern LTexture dan;
 extern LTexture gun_fire_effect;
 extern LTexture music;
+extern LTexture font1;
 
 extern Enermy dog1;
 extern Enermy dog2;
@@ -33,6 +34,9 @@ extern Uint32 tmp_time;
 
 extern int x_mouse;
 extern int y_mouse;
+
+extern TTF_Font *gfont1;
+
 
 extern bool GAME_OVER;
 

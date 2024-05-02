@@ -31,6 +31,8 @@ public:
     //Set alpha modulation
     void setAlpha( Uint8 alpha );
 
+    SDL_Texture* renderText(const char* text,TTF_Font* font, SDL_Color textColor);
+
     //Renders texture at given point
     void render( int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
 
@@ -52,6 +54,11 @@ public:
 	void move();
 
 	void setPos(int x, int y);
+
+	void setTexture(SDL_Texture* _texture) {
+        mTexture = _texture;
+	}
+
 
 private:
     //The actual hardware texture
