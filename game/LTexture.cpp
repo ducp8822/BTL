@@ -103,11 +103,15 @@ SDL_Texture* LTexture::renderText(const char* text,TTF_Font* font, SDL_Color tex
         {
             cout<< "Create texture from text %s"<<SDL_GetError()<<endl;
         }
+        else
+        {
+            mWidth=textSurface->w;
+            mHeight=textSurface->h;
+        }
         SDL_FreeSurface(textSurface);
     }
-    mWidth =100;
-    mHeight=100;
-    return texture;
+    mTexture=texture;
+    return mTexture;
 }
 
 void LTexture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)

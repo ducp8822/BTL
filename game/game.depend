@@ -15,7 +15,7 @@
 
 1714006252 d:\c++\btl\game\game.h
 
-1714612745 source:d:\c++\btl\game\main.cpp
+1714638576 source:d:\c++\btl\game\main.cpp
 	"lib.h"
 	"defs.h"
 	"LTexture.h"
@@ -34,7 +34,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1714612985 source:d:\c++\btl\game\ltexture.cpp
+1714635666 source:d:\c++\btl\game\ltexture.cpp
 	"LTexture.h"
 	"Global.h"
 
@@ -72,7 +72,7 @@
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 
-1714613080 d:\c++\btl\game\ltexture.h
+1714635660 d:\c++\btl\game\ltexture.h
 	"lib.h"
 	"defs.h"
 
@@ -84,7 +84,7 @@
 1714611591 source:d:\c++\btl\game\global.cpp
 	"Global.h"
 
-1714611934 source:d:\c++\btl\game\lfile.cpp
+1714636640 source:d:\c++\btl\game\lfile.cpp
 	"Lfile.h"
 
 1714471162 d:\c++\btl\game\lfile.h

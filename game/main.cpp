@@ -7,9 +7,11 @@
 using namespace std;
 
 int treasure_armor = 0;
-int bullet_count =3;
+int bullet_count;
 bool press_mouse=false;
 double angle_arrow;
+bool restart=false;
+
 void waitUntilMouseKeyPressed()
 {
     SDL_Event e;
@@ -50,6 +52,7 @@ void initialize()
     srand(time(0));
 
     treasure_armor = 3;
+    bullet_count=3;
 
     cat.setPos((SCREEN_WIDTH - cat.getWidth()) / 2, (SCREEN_HEIGHT - cat.getHeight()) / 2);
 	cat.setVelocity(0, 0);
@@ -63,7 +66,7 @@ void initialize()
     food.renew();
 
 	gun.setPos((SCREEN_WIDTH - gun.getWidth()) / 2, (SCREEN_HEIGHT - gun.getHeight()) / 2);
-	dan.setPos((SCREEN_WIDTH - dan.getWidth()) / 2 - 15, dan.getHeight() + 20);
+	dan.setPos((SCREEN_WIDTH - dan.getWidth())/2 +20 , dan.getHeight()-30);
 	treasure.setVelocity(0, 1);
 	treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -treasure.getHeight() - 20);
 }
@@ -101,6 +104,7 @@ void game()
 	if (checkCollision(cat, dog1) || checkCollision(cat, dog2))
 	{
 		GAME_OVER = true;
+		restart=true;
 	}
 
 	while(checkCollision(cat,food))
@@ -114,11 +118,15 @@ void game()
 
 void render()
 {
+    string s=to_string(bullet_count);
+    const char* bullet=s.c_str();
     background2.render(0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
 
-    SDL_Color color={255,255,255,255};
-    font1.setTexture(font1.renderText("Hello",gfont1,color));
-	font1.render(100,100);
+
+    SDL_Color color={205,100,0,255};
+
+    font1.renderText(bullet,gfont1,color);
+	font1.render(SCREEN_WIDTH/2-50,27);
 
 
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
@@ -148,8 +156,6 @@ void render()
 
 int main(int argc, char *argv[])
 {
-
-
     if (!init())
     {
         cout << "Failed to initialize!" << endl;
@@ -175,6 +181,7 @@ int main(int argc, char *argv[])
             //Event handler
             SDL_Event e;
             //While application is running
+
             while (!quit && !GAME_OVER)
             {
                 while (SDL_PollEvent(&e) != 0)
@@ -195,7 +202,14 @@ int main(int argc, char *argv[])
 									cat.setVelocity(push_x, push_y);
 									bullet_count--;
 									press_mouse=true;
-									cerr<<bullet_count<<endl;
+									if(e.type == SDL_KEYDOWN)
+                                    {
+                                        if(e.key.keysym.sym == SDLK_SPACE && GAME_OVER)
+                                        {
+                                            restart=true;
+                                            cerr<<"abcd"<<endl;
+                                        }
+                                    }
                             }
 						}
 					}
@@ -203,21 +217,25 @@ int main(int argc, char *argv[])
 					game();
 					render();
 					SDL_RenderPresent(gRenderer);
-					if (GAME_OVER == true)
+					if (GAME_OVER == true )
                     {
                         if (cat.loadFromFile("images/cat_cry.png") == false)
                         cout << "Failed to load cat_cry image" << endl;
                         Mix_PlayChannel(-1,gameover_music,0);
                         SDL_Delay(2500);
+                        if(restart==true)
+                        {
+                            initialize();
+                            GAME_OVER=false;
+                            restart=false;
+                        }
                     }
 					SDL_Delay(5);
             }
         }
     }
-
     SDL_Delay(500);
     //Free resources and close SDL
     close();
-
     return 0;
 }

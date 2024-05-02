@@ -55,10 +55,6 @@ public:
 
 	void setPos(int x, int y);
 
-	void setTexture(SDL_Texture* _texture) {
-        mTexture = _texture;
-	}
-
 
 private:
     //The actual hardware texture
