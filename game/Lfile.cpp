@@ -134,6 +134,13 @@ bool loadMedia()
 		cout << "Failed to load food image" << endl;
 		success = false;
 	}
+	//Load score
+	if( !score.loadFromFile( "images/score.png" ) )
+	{
+		cout << "Failed to load score image" << endl;
+		success = false;
+	}
+
 
 	//load musicc
 
@@ -159,6 +166,7 @@ bool loadMedia()
         success=false;
     }
 
+
     //load font
 
     gfont1=TTF_OpenFont("fonts/font1.ttf",57);
@@ -167,6 +175,13 @@ bool loadMedia()
             cout<<"Load font %s"<<TTF_GetError()<<endl;
             success=false;
         }
+     gfont2=TTF_OpenFont("fonts/font1.ttf",25);
+        if(gfont1 == nullptr)
+        {
+            cout<<"Load font %s"<<TTF_GetError()<<endl;
+            success=false;
+        }
+
 
 	return success;
 }

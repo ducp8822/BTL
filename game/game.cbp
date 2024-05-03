@@ -40,6 +40,7 @@
 		<Unit filename="LTexture.h" />
 		<Unit filename="Lfile.cpp" />
 		<Unit filename="Lfile.h" />
+		<Unit filename="Menu.h" />
 		<Unit filename="defs.h" />
 		<Unit filename="lib.h" />
 		<Unit filename="main.cpp" />

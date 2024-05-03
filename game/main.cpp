@@ -4,6 +4,7 @@
 #include "Global.h"
 #include "Lfile.h"
 #include "Enermy.h"
+#include "Menu.h"
 using namespace std;
 
 int treasure_armor = 0;
@@ -11,6 +12,10 @@ int bullet_count;
 bool press_mouse=false;
 double angle_arrow;
 bool restart=false;
+int point=0;
+int highScore;
+Menu menu;
+SDL_Color color={205,100,0,255};
 
 void waitUntilMouseKeyPressed()
 {
@@ -50,7 +55,7 @@ double getAngle(double x, double y, double x0, double y0) {
 void initialize()
 {
     srand(time(0));
-
+    point=0;
     treasure_armor = 3;
     bullet_count=3;
 
@@ -67,6 +72,7 @@ void initialize()
 
 	gun.setPos((SCREEN_WIDTH - gun.getWidth()) / 2, (SCREEN_HEIGHT - gun.getHeight()) / 2);
 	dan.setPos((SCREEN_WIDTH - dan.getWidth())/2 +20 , dan.getHeight()-30);
+	score.setPos((SCREEN_WIDTH - dan.getWidth())/2 +100 , dan.getHeight()-20);
 	treasure.setVelocity(0, 1);
 	treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -treasure.getHeight() - 20);
 }
@@ -85,6 +91,7 @@ void game()
 			bullet_count += 5;
 			treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -200);
 			treasure_armor = 3;
+			point+=5;
 		}
 		else
 		{
@@ -112,7 +119,9 @@ void game()
 	    Mix_PlayChannel(-1,food_music,0);
 	    bullet_count+=2;
 	    food.renew();
+	    point+=1;
 	}
+	highScore=max(highScore,point);
 
 }
 
@@ -120,14 +129,24 @@ void render()
 {
     string s=to_string(bullet_count);
     const char* bullet=s.c_str();
+
+    string s1=to_string(treasure_armor);
+    const char* treasure_armor=s1.c_str();
+
+    string s2=to_string(point);
+    const char* point=s2.c_str();
+
     background2.render(0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
 
-
-    SDL_Color color={205,100,0,255};
+    score.render(score.getX()-20,score.getY());
 
     font1.renderText(bullet,gfont1,color);
 	font1.render(SCREEN_WIDTH/2-50,27);
 
+	font2.renderText(treasure_armor,gfont2,color);
+
+	font3.renderText(point,gfont1,color);
+	font3.render(SCREEN_WIDTH/2+100,27);
 
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
 	dog2.render(dog2.getX(), dog2.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
@@ -143,6 +162,7 @@ void render()
 	}
 
 	treasure.render(treasure.getX(), treasure.getY());
+	font2.render(treasure.getX()+treasure.getWidth(), treasure.getY()+treasure.getHeight()-20);
 
 	cat.render(cat.getX(), cat.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
     dan.render(dan.getX(), dan.getY());
@@ -180,6 +200,8 @@ int main(int argc, char *argv[])
         {
             //Main loop flag
             bool quit = false;
+            menu.Show(gRenderer,"Play game","exit","hhh",gfont1,color);
+            vt1:
 
             initialize();
 
@@ -221,6 +243,7 @@ int main(int argc, char *argv[])
 					SDL_RenderClear(gRenderer);
 					game();
 					render();
+					cerr<<highScore<<endl;
 					SDL_RenderPresent(gRenderer);
 					if (GAME_OVER == true )
                     {
@@ -230,9 +253,8 @@ int main(int argc, char *argv[])
                         SDL_Delay(2500);
                         if(restart==true)
                         {
-                            initialize();
                             GAME_OVER=false;
-                            restart=false;
+                            goto vt1;
                         }
                     }
 					SDL_Delay(5);

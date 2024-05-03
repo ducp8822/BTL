@@ -17,6 +17,10 @@ LTexture dan;
 LTexture gun_fire_effect;
 LTexture music;
 LTexture font1;
+LTexture font2;
+LTexture font3;
+LTexture score;
+
 
  Mix_Chunk *gun_music=NULL;
  Mix_Chunk *gameover_music=NULL;
@@ -30,6 +34,8 @@ Enermy treasure;
 Enermy food;
 
 TTF_Font *gfont1;
+TTF_Font *gfont2;
+
 
 bool GAME_OVER = false;
 int x_mouse = 0;
