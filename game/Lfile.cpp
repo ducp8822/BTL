@@ -67,13 +67,6 @@ bool loadMedia()
 
 	//load anh
 
-	//Load background1
-	if( !background1.loadFromFile( "images/background1.png" ) )
-	{
-		cout << "Failed to load background1 image" << endl;
-		success = false;
-	}
-
 	//Load background2
 	if( !background2.loadFromFile( "images/background2.png" ) )
 	{

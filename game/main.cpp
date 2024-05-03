@@ -16,6 +16,8 @@ int point=0;
 int highScore;
 Menu menu;
 SDL_Color color={205,100,0,255};
+string s2=to_string(point);
+    const char* point_=s2.c_str();
 
 void waitUntilMouseKeyPressed()
 {
@@ -133,9 +135,6 @@ void render()
     string s1=to_string(treasure_armor);
     const char* treasure_armor=s1.c_str();
 
-    string s2=to_string(point);
-    const char* point=s2.c_str();
-
     background2.render(0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
 
     score.render(score.getX()-20,score.getY());
@@ -145,7 +144,7 @@ void render()
 
 	font2.renderText(treasure_armor,gfont2,color);
 
-	font3.renderText(point,gfont1,color);
+	font3.renderText(point_,gfont1,color);
 	font3.render(SCREEN_WIDTH/2+100,27);
 
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
@@ -199,8 +198,9 @@ int main(int argc, char *argv[])
         else
         {
             //Main loop flag
-            bool quit = false;
-            menu.Show(gRenderer,"Play game","exit","hhh",gfont1,color);
+            //bool quit = false;
+            bool quit=menu.Show(gRenderer,"Play game","Exit",point_,gfont1,color);
+
             vt1:
 
             initialize();

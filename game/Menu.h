@@ -8,23 +8,82 @@ class Menu
 private:
     LTexture text1;
     LTexture text2;
+    LTexture text3;
     LTexture anh;
+    LTexture title1;
+    LTexture title2;
+    SDL_Event event_;
+    int x,y;
 public:
     Menu()
     {
 
     }
-    int Show(SDL_Renderer* render_,const char* text1_,const char* text2_, const char* text3_,TTF_Font *font_,SDL_Color color_)
+    bool Show(SDL_Renderer* render_,const char* text1_,const char* text2_, const char* text3_,TTF_Font *font_,SDL_Color color_)
     {
-        anh.loadFromFile("images/background1.png");
+        anh.loadFromFile("images/1.png");
         anh.render(0,0);
+
+        title1.loadFromFile("images/title.png");
+        title1.render(406,424);
+        title1.render(406,603);
+
+
+        title2.loadFromFile("images/title2.png");
+
         text1.renderText(text1_,font_,color_);
-        text1.render(400,300);
+
+
         text2.renderText(text2_,font_,color_);
-        text2.render(500,700);
+
+        text3.renderText(text3_,font_,color_);
+        text3.render(660,276);
         SDL_RenderPresent(render_);
-        SDL_Delay(5000);
-        return 1;
+        while (true) {
+        SDL_PollEvent(&event_);
+        SDL_GetMouseState(&x, &y);
+        cerr<<x<<" "<<y<<endl;
+        switch (event_.type) {
+            case SDL_QUIT:
+                 return 1;
+                 break;
+            case SDL_MOUSEMOTION:
+                if(x>=405 && x<=866 && y>=400 && y<=538 )
+                {
+                    title2.render(406,424);
+                    text1.render(485,455);
+                    SDL_RenderPresent(render_);
+                }else if(x>=405 && x<=866 && y>=593 && y<=715)
+                {
+                    title2.render(406,603);
+                    text2.render(580,632);
+                    SDL_RenderPresent(render_);
+                }else
+                {
+                    title1.render(406,424);
+                    text1.render(485,455);
+
+                    title1.render(406,603);
+                    text2.render(580,632);
+                    SDL_RenderPresent(render_);
+
+                }
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                if(x>=405 && x<=866 && y>=400 && y<=538)
+                {
+                    //play game
+                    return 0;
+                }
+                if(x>=405 && x<=866 && y>=593 && y<=715)
+                {
+                    return 1;
+                }
+                break;
+        }
+    }
+
+
     }
 };
 
