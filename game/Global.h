@@ -31,9 +31,10 @@ extern Enermy food;
 extern Mix_Chunk *gun_music;
 extern Mix_Chunk *gameover_music;
 extern Mix_Chunk *food_music;
+extern Mix_Chunk *ting;
 
-
-extern Uint32 tmp_time;
+extern Mix_Music *music_;
+extern Mix_Music *m_music;
 
 extern int x_mouse;
 extern int y_mouse;

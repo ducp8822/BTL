@@ -70,67 +70,67 @@ bool loadMedia()
 	//Load background2
 	if( !background2.loadFromFile( "images/background2.png" ) )
 	{
-		cout << "Failed to load background2 image" << endl;
+		cout << "Failed to load background2 image" << IMG_GetError()<<endl;
 		success = false;
 	}
     //Load cat
 	if( !cat.loadFromFile( "images/cat.png" ) )
 	{
-		cout << "Failed to load cat image" << endl;
+		cout << "Failed to load cat image" <<IMG_GetError()<< endl;
 		success = false;
 	}
 	//Load dog1
 	if( !dog1.loadFromFile( "images/dog1.png" ) )
 	{
-		cout << "Failed to load dog1 image" << endl;
+		cout << "Failed to load dog1 image" <<IMG_GetError()<< endl;
 		success = false;
 	}
 	//Load dog2
 	if( !dog2.loadFromFile( "images/dog2.png" ) )
 	{
-		cout << "Failed to load dog2 image" << endl;
+		cout << "Failed to load dog2 image" << IMG_GetError()<<endl;
 		success = false;
 	}
 	//Load gameover
 	if( !gameover.loadFromFile( "images/gameover.png" ) )
 	{
-		cout << "Failed to load gameover image" << endl;
+		cout << "Failed to load gameover image" << IMG_GetError()<<endl;
 		success = false;
 	}
 	//Load dan
 	if( !dan.loadFromFile( "images/dan.png" ) )
 	{
-		cout << "Failed to load dan image" << endl;
+		cout << "Failed to load dan image" << IMG_GetError()<<endl;
 		success = false;
 	}
 	//Load treasure
 	if( !treasure.loadFromFile( "images/treasure.png" ) )
 	{
-		cout << "Failed to load treasure image" << endl;
+		cout << "Failed to load treasure image" <<IMG_GetError()<< endl;
 		success = false;
 	}
 	//Load gun_fire_effect
 	if( !gun_fire_effect.loadFromFile( "images/gun_fire_effect.png" ) )
 	{
-		cout << "Failed to load gun_fire_effect image" << endl;
+		cout << "Failed to load gun_fire_effect image" <<IMG_GetError()<< endl;
 		success = false;
 	}
 	//Load gun
 	if( !gun.loadFromFile( "images/gun.png" ) )
 	{
-		cout << "Failed to load gun image" << endl;
+		cout << "Failed to load gun image" << IMG_GetError()<<endl;
 		success = false;
 	}
 	//Load food
 	if( !food.loadFromFile( "images/food.png" ) )
 	{
-		cout << "Failed to load food image" << endl;
+		cout << "Failed to load food image" << IMG_GetError()<<endl;
 		success = false;
 	}
 	//Load score
 	if( !score.loadFromFile( "images/score.png" ) )
 	{
-		cout << "Failed to load score image" << endl;
+		cout << "Failed to load score image" <<IMG_GetError()<< endl;
 		success = false;
 	}
 
@@ -141,21 +141,40 @@ bool loadMedia()
 	food_music=Mix_LoadWAV("musics/food_music.wav");
 	if(food_music == NULL)
     {
-        cout<< "Failed to load food_music" <<endl;
+        cout<< "Failed to load food_music"<<Mix_GetError() <<endl;
         success=false;
     }
     //Load gun_music
 	gun_music=Mix_LoadWAV("musics/gun_music.wav");
 	if(gun_music == NULL)
     {
-        cout<< "Failed to load gun_music" <<endl;
+        cout<< "Failed to load gun_music" <<Mix_GetError()<<endl;
         success=false;
     }
     //Load gameover_music
 	gameover_music=Mix_LoadWAV("musics/gameover_music.wav");
 	if(gameover_music == NULL)
     {
-        cout<< "Failed to load gameover_music" <<endl;
+        cout<< "Failed to load gameover_music" <<Mix_GetError()<<endl;
+        success=false;
+    }
+
+    music_=Mix_LoadMUS("musics/music_.mp3");
+    if(music_==NULL)
+    {
+        cout<< "Failed to load music_" <<Mix_GetError()<<endl;
+        success=false;
+    }
+    m_music=Mix_LoadMUS("musics/m_music.mp3");
+    if(m_music==NULL)
+    {
+        cout<< "Failed to load  m_music" <<Mix_GetError()<<endl;
+        success=false;
+    }
+    ting=Mix_LoadWAV("musics/ting.wav");
+    if(ting==NULL)
+    {
+        cout<< "Failed to load  ting" <<Mix_GetError()<<endl;
         success=false;
     }
 

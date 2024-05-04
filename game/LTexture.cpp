@@ -192,17 +192,5 @@ void LTexture::checkvelocity()
 	if (mVelX < -10) mVelX = -10;
 	if (mVelY > 10) mVelY = 10;
 	if (mVelY < -10) mVelY = -10;
-	if (int(SDL_GetTicks() - tmp_time)/ 1000 == 1)
-	{
-		tmp_time = SDL_GetTicks();
-		if ((mVelX == 1 || mVelX == -1) && (mVelY == 1 || mVelY == -1))
-		{
-			mVelX = 0;
-			mVelY = 0;
-		}
-		if (mVelX > 1) mVelX--;
-		if (mVelY > 1) mVelY--;
-		if (mVelX < -1) mVelX++;
-		if (mVelY < -1) mVelY++;
-	}
+
 }

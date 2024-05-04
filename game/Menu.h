@@ -1,7 +1,6 @@
 #ifndef MENU_H_
 #define MENU_H_
 #include "LTexture.h"
-#include "Global.h"
 
 class Menu
 {
@@ -19,8 +18,15 @@ public:
     {
 
     }
+    void play()
+    {
+        Mix_PlayMusic(m_music,-1);
+
+    }
     bool Show(SDL_Renderer* render_,const char* text1_,const char* text2_, const char* text3_,TTF_Font *font_,SDL_Color color_)
     {
+        int channel;
+        play();
         anh.loadFromFile("images/1.png");
         anh.render(0,0);
 
@@ -28,11 +34,9 @@ public:
         title1.render(406,424);
         title1.render(406,603);
 
-
         title2.loadFromFile("images/title2.png");
 
         text1.renderText(text1_,font_,color_);
-
 
         text2.renderText(text2_,font_,color_);
 
@@ -42,7 +46,6 @@ public:
         while (true) {
         SDL_PollEvent(&event_);
         SDL_GetMouseState(&x, &y);
-        cerr<<x<<" "<<y<<endl;
         switch (event_.type) {
             case SDL_QUIT:
                  return 1;
@@ -50,6 +53,7 @@ public:
             case SDL_MOUSEMOTION:
                 if(x>=405 && x<=866 && y>=400 && y<=538 )
                 {
+
                     title2.render(406,424);
                     text1.render(485,455);
                     SDL_RenderPresent(render_);
@@ -72,11 +76,13 @@ public:
             case SDL_MOUSEBUTTONDOWN:
                 if(x>=405 && x<=866 && y>=400 && y<=538)
                 {
+                    Mix_PlayChannelTimed(-1,ting,0,100);
                     //play game
                     return 0;
                 }
                 if(x>=405 && x<=866 && y>=593 && y<=715)
                 {
+                    Mix_PlayChannelTimed(-1,ting,0,100);
                     return 1;
                 }
                 break;

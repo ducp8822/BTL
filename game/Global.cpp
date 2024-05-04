@@ -25,8 +25,10 @@ LTexture score;
  Mix_Chunk *gun_music=NULL;
  Mix_Chunk *gameover_music=NULL;
  Mix_Chunk *food_music=NULL;
+ Mix_Chunk *ting;
 
-Uint32 tmp_time = 0;
+Mix_Music *music_;
+Mix_Music *m_music;
 
 Enermy dog1;
 Enermy dog2;

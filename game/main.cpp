@@ -13,11 +13,10 @@ bool press_mouse=false;
 double angle_arrow;
 bool restart=false;
 int point=0;
-int highScore;
+int highScore=0;
 Menu menu;
 SDL_Color color={205,100,0,255};
-string s2=to_string(point);
-    const char* point_=s2.c_str();
+
 
 void waitUntilMouseKeyPressed()
 {
@@ -78,9 +77,19 @@ void initialize()
 	treasure.setVelocity(0, 1);
 	treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -treasure.getHeight() - 20);
 }
+Uint32 time_reload;
+void reload_bullet()
+{
+    if((SDL_GetTicks()-time_reload)>=2000)
+    {
+        bullet_count++;
+        time_reload=SDL_GetTicks();
+    }
+}
 
 void game()
 {
+    reload_bullet();
     SDL_GetMouseState(&x_mouse, &y_mouse);
 
 	cat.checkvelocity();
@@ -123,12 +132,13 @@ void game()
 	    food.renew();
 	    point+=1;
 	}
-	highScore=max(highScore,point);
+
 
 }
 
 void render()
 {
+
     string s=to_string(bullet_count);
     const char* bullet=s.c_str();
 
@@ -143,9 +153,7 @@ void render()
 	font1.render(SCREEN_WIDTH/2-50,27);
 
 	font2.renderText(treasure_armor,gfont2,color);
-
-	font3.renderText(point_,gfont1,color);
-	font3.render(SCREEN_WIDTH/2+100,27);
+	font2.render(treasure.getX()+treasure.getWidth(), treasure.getY()+treasure.getHeight()-20);
 
 	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
 	dog2.render(dog2.getX(), dog2.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
@@ -161,7 +169,6 @@ void render()
 	}
 
 	treasure.render(treasure.getX(), treasure.getY());
-	font2.render(treasure.getX()+treasure.getWidth(), treasure.getY()+treasure.getHeight()-20);
 
 	cat.render(cat.getX(), cat.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
     dan.render(dan.getX(), dan.getY());
@@ -199,18 +206,21 @@ int main(int argc, char *argv[])
         {
             //Main loop flag
             //bool quit = false;
-            bool quit=menu.Show(gRenderer,"Play game","Exit",point_,gfont1,color);
-
             vt1:
+            string s3=to_string(highScore);
+            const char* highScore_=s3.c_str();
+
+            bool quit=menu.Show(gRenderer,"Play game","Exit",highScore_,gfont1,color);
+            Mix_PlayMusic(music_,-1);
 
             initialize();
 
             //Event handler
             SDL_Event e;
             //While application is running
-
             while (!quit && !GAME_OVER)
             {
+
                 while (SDL_PollEvent(&e) != 0)
 					{
 						if (e.type == SDL_QUIT)
@@ -223,45 +233,43 @@ int main(int argc, char *argv[])
 							SDL_GetMouseState(&x_mouse, &y_mouse);
                             if (bullet_count > 0)
                             {
-									tmp_time = SDL_GetTicks();
+
 									int push_x = -(x_mouse - cat.getX()) / 45 + cat.getXVelocity();
 									int push_y = -(y_mouse - cat.getY()) / 45 + cat.getYVelocity();
 									cat.setVelocity(push_x, push_y);
 									bullet_count--;
 									press_mouse=true;
-									if(e.type == SDL_KEYDOWN)
-                                    {
-                                        if(e.key.keysym.sym == SDLK_SPACE && GAME_OVER)
-                                        {
-                                            restart=true;
-                                            cerr<<"abcd"<<endl;
-                                        }
-                                    }
+
                             }
 						}
 					}
-					SDL_RenderClear(gRenderer);
 					game();
 					render();
-					cerr<<highScore<<endl;
+					string s2=to_string(point);
+                    const char* point_=s2.c_str();
+
+                    font3.renderText(point_,gfont1,color);
+                    font3.render(SCREEN_WIDTH/2+100,27);
+                    highScore=max(highScore,point);
+
 					SDL_RenderPresent(gRenderer);
+					SDL_Delay(5);
 					if (GAME_OVER == true )
                     {
+                        Mix_PauseMusic();
                         if (cat.loadFromFile("images/cat_cry.png") == false)
                         cout << "Failed to load cat_cry image" << endl;
                         Mix_PlayChannel(-1,gameover_music,0);
                         SDL_Delay(2500);
-                        if(restart==true)
+                        if(true)
                         {
                             GAME_OVER=false;
                             goto vt1;
                         }
                     }
-					SDL_Delay(5);
             }
         }
     }
-    SDL_Delay(500);
     //Free resources and close SDL
     close();
     return 0;
