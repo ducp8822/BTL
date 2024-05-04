@@ -20,7 +20,8 @@ LTexture font1;
 LTexture font2;
 LTexture font3;
 LTexture score;
-
+LTexture on;
+LTexture off;
 
  Mix_Chunk *gun_music=NULL;
  Mix_Chunk *gameover_music=NULL;

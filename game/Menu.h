@@ -12,11 +12,16 @@ private:
     LTexture title1;
     LTexture title2;
     SDL_Event event_;
+    bool kt;
     int x,y;
 public:
     Menu()
     {
-
+        kt=true;
+    }
+    void bat_tat()
+    {
+        kt=!kt;
     }
     void play()
     {
@@ -25,10 +30,10 @@ public:
     }
     bool Show(SDL_Renderer* render_,const char* text1_,const char* text2_, const char* text3_,TTF_Font *font_,SDL_Color color_)
     {
-        int channel;
         play();
         anh.loadFromFile("images/1.png");
         anh.render(0,0);
+        on.render(SCREEN_WIDTH-on.getWidth(),0);
 
         title1.loadFromFile("images/title.png");
         title1.render(406,424);
@@ -85,12 +90,27 @@ public:
                     Mix_PlayChannelTimed(-1,ting,0,100);
                     return 1;
                 }
+                if(y>=0 && y<=on.getHeight() && x<=SCREEN_WIDTH && x>=(SCREEN_WIDTH-on.getWidth()))
+                {
+                       bat_tat();
+                       if(kt)
+                       {
+                           on.render(SCREEN_WIDTH-on.getWidth(),0);
+                           Mix_PlayMusic(m_music,-1);
+                       }
+                       else
+                       {
+                           off.render(SCREEN_WIDTH-on.getWidth(),0);
+                           Mix_HaltMusic();
+                       }
+                }
+
                 break;
         }
     }
 
-
     }
 };
+
 
 #endif // MENU_H_

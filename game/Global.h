@@ -22,6 +22,8 @@ extern LTexture font1;
 extern LTexture font2;
 extern LTexture font3;
 extern LTexture score;
+extern LTexture on;
+extern LTexture off;
 
 extern Enermy dog1;
 extern Enermy dog2;
@@ -35,6 +37,7 @@ extern Mix_Chunk *ting;
 
 extern Mix_Music *music_;
 extern Mix_Music *m_music;
+
 
 extern int x_mouse;
 extern int y_mouse;

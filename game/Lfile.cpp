@@ -133,6 +133,18 @@ bool loadMedia()
 		cout << "Failed to load score image" <<IMG_GetError()<< endl;
 		success = false;
 	}
+	//Load on
+	if( !on.loadFromFile( "images/on.png" ) )
+	{
+		cout << "Failed to load on image" <<IMG_GetError()<< endl;
+		success = false;
+	}
+	//Load off
+	if( !off.loadFromFile( "images/off.png" ) )
+	{
+		cout << "Failed to load off image" <<IMG_GetError()<< endl;
+		success = false;
+	}
 
 
 	//load musicc

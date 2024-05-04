@@ -172,7 +172,7 @@ void render()
 
 	cat.render(cat.getX(), cat.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
     dan.render(dan.getX(), dan.getY());
-
+    on.render(SCREEN_WIDTH-on.getWidth(),0);
 
 	if (GAME_OVER) {
 		gameover.render((SCREEN_WIDTH - gameover.getWidth()) / 2, (SCREEN_HEIGHT - gameover.getHeight()) / 2, NULL, 0, NULL, SDL_FLIP_NONE);
@@ -204,15 +204,17 @@ int main(int argc, char *argv[])
         }
         else
         {
-            //Main loop flag
-            //bool quit = false;
+            string t="play game";
+
             vt1:
+            const char* play=t.c_str();
             string s3=to_string(highScore);
             const char* highScore_=s3.c_str();
 
-            bool quit=menu.Show(gRenderer,"Play game","Exit",highScore_,gfont1,color);
+            //Main loop flag
+            //bool quit = false;
+            bool quit=menu.Show(gRenderer,play,"Exit",highScore_,gfont1,color);
             Mix_PlayMusic(music_,-1);
-
             initialize();
 
             //Event handler
@@ -264,6 +266,7 @@ int main(int argc, char *argv[])
                         if(true)
                         {
                             GAME_OVER=false;
+                            t="play again";
                             goto vt1;
                         }
                     }
