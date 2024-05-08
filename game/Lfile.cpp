@@ -145,8 +145,11 @@ bool loadMedia()
 		cout << "Failed to load off image" <<IMG_GetError()<< endl;
 		success = false;
 	}
-
-
+	 if (cat.loadFromFile("images/cat_cry.png") == false)
+     {
+         cout << "Failed to load off image" <<IMG_GetError()<< endl;
+		success = false;
+     }
 	//load musicc
 
 	//Load food_music
@@ -214,25 +217,35 @@ void close()
 {
 	//Free loaded images
 	background1.free();
+	background2.free();
+	gameover.free();
 	cat.free();
+	gun.free();
+	dan.free();
+	gun_fire_effect.free();
+	music.free();
+	font1.free();
+	font2.free();
+	font3.free();
+	score.free();
+	on.free();
+	off.free();
 	dog1.free();
 	dog2.free();
 	treasure.free();
-	gun.free();
-    dan.free();
-    food.free();
-    gun_fire_effect.free();
-    gameover.free();
+	food.free();
 
-	//Destroy window
-	SDL_DestroyRenderer( gRenderer );
-	SDL_DestroyWindow( gWindow );
 	gWindow = NULL;
 	gRenderer = NULL;
+
 
     gameover_music=NULL;
     gun_music= NULL;
     food_music = NULL;
+
+
+	SDL_DestroyRenderer( gRenderer );
+	SDL_DestroyWindow( gWindow );
 
 	//Quit SDL subsystems
 	IMG_Quit();

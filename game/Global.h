@@ -41,6 +41,7 @@ extern Mix_Music *m_music;
 
 extern int x_mouse;
 extern int y_mouse;
+extern int tmp_time;
 
 extern TTF_Font *gfont1;
 extern TTF_Font *gfont2;

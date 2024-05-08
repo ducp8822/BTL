@@ -43,4 +43,5 @@ TTF_Font *gfont2;
 bool GAME_OVER = false;
 int x_mouse = 0;
 int y_mouse = 0;
+int tmp_time=0;
 

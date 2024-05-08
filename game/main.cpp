@@ -11,7 +11,6 @@ int treasure_armor = 0;
 int bullet_count;
 bool press_mouse=false;
 double angle_arrow;
-bool restart=false;
 int point=0;
 int highScore=0;
 Menu menu;
@@ -63,7 +62,6 @@ void initialize()
     cat.setPos((SCREEN_WIDTH - cat.getWidth()) / 2, (SCREEN_HEIGHT - cat.getHeight()) / 2);
 	cat.setVelocity(0, 0);
 	cat.loadFromFile("images/cat.png");
-
 	dog1.setVelocity(0, 1);
 	dog2.setVelocity(0, 1);
 	dog1.setPos(rand() % (SCREEN_WIDTH - dog1.getWidth()), -dog1.getHeight());
@@ -121,8 +119,7 @@ void game()
 
 	if (checkCollision(cat, dog1) || checkCollision(cat, dog2))
 	{
-		GAME_OVER = true;
-		restart=true;
+		GAME_OVER = false;
 	}
 
 	while(checkCollision(cat,food))
@@ -150,7 +147,7 @@ void render()
     score.render(score.getX()-20,score.getY());
 
     font1.renderText(bullet,gfont1,color);
-	font1.render(SCREEN_WIDTH/2-50,27);
+	font1.render(SCREEN_WIDTH/2-70,27);
 
 	font2.renderText(treasure_armor,gfont2,color);
 	font2.render(treasure.getX()+treasure.getWidth(), treasure.getY()+treasure.getHeight()-20);
@@ -204,23 +201,20 @@ int main(int argc, char *argv[])
         }
         else
         {
-            string t="play game";
-
-            vt1:
-            const char* play=t.c_str();
             string s3=to_string(highScore);
             const char* highScore_=s3.c_str();
 
             //Main loop flag
-            //bool quit = false;
-            bool quit=menu.Show(gRenderer,play,"Exit",highScore_,gfont1,color);
+            bool quit = false;
+             quit=menu.Show(gRenderer,"play game","Exit",highScore_,gfont1,color);
             Mix_PlayMusic(music_,-1);
             initialize();
+            while(!quit){
 
             //Event handler
             SDL_Event e;
             //While application is running
-            while (!quit && !GAME_OVER)
+            while (!quit)
             {
 
                 while (SDL_PollEvent(&e) != 0)
@@ -253,24 +247,23 @@ int main(int argc, char *argv[])
                     font3.renderText(point_,gfont1,color);
                     font3.render(SCREEN_WIDTH/2+100,27);
                     highScore=max(highScore,point);
-
-					SDL_RenderPresent(gRenderer);
+                    SDL_RenderPresent(gRenderer);
 					SDL_Delay(5);
 					if (GAME_OVER == true )
                     {
+                        cat.loadFromFile("images/cat_cry.png");
+                        SDL_RenderPresent(gRenderer);
                         Mix_PauseMusic();
-                        if (cat.loadFromFile("images/cat_cry.png") == false)
-                        cout << "Failed to load cat_cry image" << endl;
                         Mix_PlayChannel(-1,gameover_music,0);
                         SDL_Delay(2500);
-                        if(true)
-                        {
-                            GAME_OVER=false;
-                            t="play again";
-                            goto vt1;
-                        }
+                        quit=menu.Show(gRenderer,"play again","Exit",highScore_,gfont1,color);
+                        Mix_PlayMusic(music_,-1);
+                        initialize();
+                        GAME_OVER=false;
+                        break;
                     }
             }
+        }
         }
     }
     //Free resources and close SDL
