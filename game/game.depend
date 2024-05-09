@@ -15,7 +15,7 @@
 
 1714006252 d:\c++\btl\game\game.h
 
-1715158028 source:d:\c++\btl\game\main.cpp
+1715230251 source:d:\c++\btl\game\main.cpp
 	"lib.h"
 	"defs.h"
 	"LTexture.h"
@@ -35,7 +35,7 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1715157927 source:d:\c++\btl\game\ltexture.cpp
+1715228748 source:d:\c++\btl\game\ltexture.cpp
 	"LTexture.h"
 	"Global.h"
 
@@ -73,7 +73,7 @@
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 
-1714635660 d:\c++\btl\game\ltexture.h
+1715228733 d:\c++\btl\game\ltexture.h
 	"lib.h"
 	"defs.h"
 
@@ -82,10 +82,10 @@
 	"lib.h"
 	"Enermy.h"
 
-1715157988 source:d:\c++\btl\game\global.cpp
+1715229557 source:d:\c++\btl\game\global.cpp
 	"Global.h"
 
-1715155589 source:d:\c++\btl\game\lfile.cpp
+1715166155 source:d:\c++\btl\game\lfile.cpp
 	"Lfile.h"
 
 1714471162 d:\c++\btl\game\lfile.h
@@ -93,15 +93,15 @@
 	"defs.h"
 	"Global.h"
 
-1714566334 source:d:\c++\btl\game\enermy.cpp
+1715229931 source:d:\c++\btl\game\enermy.cpp
 	"Enermy.h"
 	"Global.h"
 	"defs.h"
 
-1714558963 d:\c++\btl\game\enermy.h
+1715229931 d:\c++\btl\game\enermy.h
 	"Lib.h"
 	"defs.h"
 
-1714821573 d:\c++\btl\game\menu.h
+1715230775 d:\c++\btl\game\menu.h
 	"LTexture.h"
 

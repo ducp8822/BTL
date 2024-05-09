@@ -36,6 +36,7 @@ Enermy dog2;
 Enermy treasure;
 Enermy food;
 
+
 TTF_Font *gfont1;
 TTF_Font *gfont2;
 

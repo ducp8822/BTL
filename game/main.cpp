@@ -59,6 +59,7 @@ void initialize()
     treasure_armor = 3;
     bullet_count=3;
 
+
     cat.setPos((SCREEN_WIDTH - cat.getWidth()) / 2, (SCREEN_HEIGHT - cat.getHeight()) / 2);
 	cat.setVelocity(0, 0);
 	cat.loadFromFile("images/cat.png");
@@ -119,7 +120,9 @@ void game()
 
 	if (checkCollision(cat, dog1) || checkCollision(cat, dog2))
 	{
-		GAME_OVER = false;
+		GAME_OVER = true;
+        cat.loadFromFile("images/cat_cry.png");
+        SDL_RenderPresent(gRenderer);
 	}
 
 	while(checkCollision(cat,food))
@@ -142,7 +145,7 @@ void render()
     string s1=to_string(treasure_armor);
     const char* treasure_armor=s1.c_str();
 
-    background2.render(0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
+    background2.render(0, 0);
 
     score.render(score.getX()-20,score.getY());
 
@@ -152,27 +155,27 @@ void render()
 	font2.renderText(treasure_armor,gfont2,color);
 	font2.render(treasure.getX()+treasure.getWidth(), treasure.getY()+treasure.getHeight()-20);
 
-	dog1.render(dog1.getX(), dog1.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
-	dog2.render(dog2.getX(), dog2.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
+	dog1.render(dog1.getX(), dog1.getY());
+	dog2.render(dog2.getX(), dog2.getY());
 	food.render(food.getX(),food.getY());
 
-	gun.render(gun.getX(), gun.getY(), NULL, angle_arrow, NULL, SDL_FLIP_NONE);
+	gun.render(gun.getX(), gun.getY(), NULL, angle_arrow);
 	if (press_mouse)
 	{
 	    Mix_PlayChannel(-1,gun_music,0);
 		gun_fire_effect.setPos(gun.getX() - (gun_fire_effect.getWidth() - gun.getWidth()) / 2, gun.getY() - (gun_fire_effect.getHeight() - gun.getHeight()) / 2);
-		gun_fire_effect.render(gun_fire_effect.getX(), gun_fire_effect.getY(), NULL, angle_arrow, NULL, SDL_FLIP_NONE);
+		gun_fire_effect.render(gun_fire_effect.getX(), gun_fire_effect.getY(), NULL, angle_arrow);
 		press_mouse = false;
 	}
 
 	treasure.render(treasure.getX(), treasure.getY());
 
-	cat.render(cat.getX(), cat.getY(), NULL, 0, NULL, SDL_FLIP_NONE);
+	cat.render(cat.getX(), cat.getY());
     dan.render(dan.getX(), dan.getY());
     on.render(SCREEN_WIDTH-on.getWidth(),0);
 
 	if (GAME_OVER) {
-		gameover.render((SCREEN_WIDTH - gameover.getWidth()) / 2, (SCREEN_HEIGHT - gameover.getHeight()) / 2, NULL, 0, NULL, SDL_FLIP_NONE);
+		gameover.render((SCREEN_WIDTH - gameover.getWidth()) / 2, (SCREEN_HEIGHT - gameover.getHeight()) / 2);
 	}
 }
 
@@ -206,7 +209,7 @@ int main(int argc, char *argv[])
 
             //Main loop flag
             bool quit = false;
-             quit=menu.Show(gRenderer,"play game","Exit",highScore_,gfont1,color);
+            quit=menu.Show(gRenderer,"play game","Exit",highScore_,gfont1,color);
             Mix_PlayMusic(music_,-1);
             initialize();
             while(!quit){
@@ -247,18 +250,20 @@ int main(int argc, char *argv[])
                     font3.renderText(point_,gfont1,color);
                     font3.render(SCREEN_WIDTH/2+100,27);
                     highScore=max(highScore,point);
+                    string s3=to_string(highScore);
+                    const char* highScore_=s3.c_str();
+
                     SDL_RenderPresent(gRenderer);
 					SDL_Delay(5);
 					if (GAME_OVER == true )
                     {
-                        cat.loadFromFile("images/cat_cry.png");
-                        SDL_RenderPresent(gRenderer);
                         Mix_PauseMusic();
                         Mix_PlayChannel(-1,gameover_music,0);
                         SDL_Delay(2500);
                         quit=menu.Show(gRenderer,"play again","Exit",highScore_,gfont1,color);
                         Mix_PlayMusic(music_,-1);
                         initialize();
+                        SDL_RenderPresent(gRenderer);
                         GAME_OVER=false;
                         break;
                     }
