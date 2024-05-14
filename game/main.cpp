@@ -67,6 +67,9 @@ void initialize()
 	dog2.setVelocity(0, 1);
 	dog1.setPos(rand() % (SCREEN_WIDTH - dog1.getWidth()), -dog1.getHeight());
 	dog2.setPos(rand() % (SCREEN_WIDTH - dog2.getWidth()), -dog2.getHeight());
+	while (abs(dog1.getX() - dog2.getX()) < MIN_DISTANCE_BETWEEN_DOGS) {
+        dog2.setPos(rand() % (SCREEN_WIDTH - dog2.getWidth()), -dog2.getHeight());
+    }
 
     food.renew();
 
@@ -75,6 +78,10 @@ void initialize()
 	score.setPos((SCREEN_WIDTH - dan.getWidth())/2 +100 , dan.getHeight()-20);
 	treasure.setVelocity(0, 1);
 	treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -treasure.getHeight() - 20);
+	while (abs(treasure.getX() - dog1.getX()) < MIN_DISTANCE_BETWEEN_TREASURE ||
+           abs(treasure.getX() - dog2.getX()) < MIN_DISTANCE_BETWEEN_TREASURE) {
+        treasure.setPos(rand() % (SCREEN_WIDTH - treasure.getWidth()), -treasure.getHeight());
+    }
 }
 Uint32 time_reload;
 void reload_bullet()
@@ -130,7 +137,7 @@ void game()
 	    Mix_PlayChannel(-1,food_music,0);
 	    bullet_count+=2;
 	    food.renew();
-	    point+=1;
+	    point+=2;
 	}
 
 
@@ -172,7 +179,6 @@ void render()
 
 	cat.render(cat.getX(), cat.getY());
     dan.render(dan.getX(), dan.getY());
-    on.render(SCREEN_WIDTH-on.getWidth(),0);
 
 	if (GAME_OVER) {
 		gameover.render((SCREEN_WIDTH - gameover.getWidth()) / 2, (SCREEN_HEIGHT - gameover.getHeight()) / 2);
@@ -209,7 +215,7 @@ int main(int argc, char *argv[])
 
             //Main loop flag
             bool quit = false;
-            quit=menu.Show(gRenderer,"play game","Exit",highScore_,gfont1,color);
+            quit=menu.Show(gRenderer,"play game","Exit",highScore_,"how to play",gfont1,color);
             Mix_PlayMusic(music_,-1);
             initialize();
             while(!quit){
@@ -260,7 +266,7 @@ int main(int argc, char *argv[])
                         Mix_PauseMusic();
                         Mix_PlayChannel(-1,gameover_music,0);
                         SDL_Delay(2500);
-                        quit=menu.Show(gRenderer,"play again","Exit",highScore_,gfont1,color);
+                        quit=menu.Show(gRenderer,"play again","Exit",highScore_,"how to play",gfont1,color);
                         Mix_PlayMusic(music_,-1);
                         initialize();
                         SDL_RenderPresent(gRenderer);

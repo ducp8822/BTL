@@ -25,6 +25,7 @@ extern LTexture score;
 extern LTexture on;
 extern LTexture off;
 
+
 extern Enermy dog1;
 extern Enermy dog2;
 extern Enermy treasure;
