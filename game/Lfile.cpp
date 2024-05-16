@@ -202,7 +202,7 @@ bool loadMedia()
             cout<<"Load font %s"<<TTF_GetError()<<endl;
             success=false;
         }
-     gfont2=TTF_OpenFont("fonts/font1.ttf",25);
+     gfont2=TTF_OpenFont("fonts/font2.ttf",25);
         if(gfont1 == nullptr)
         {
             cout<<"Load font %s"<<TTF_GetError()<<endl;

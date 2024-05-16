@@ -104,11 +104,10 @@ bool Menu:: Show(SDL_Renderer* render_,const char* text1_,const char* text2_, co
 
         text2.renderText(text2_,font_,color_);
 
-        //text3.renderText(text3_,font_,color_);
-        //text3.render(660,276);
+        text3.renderText(text3_,font_,color_);
+        text3.render(390,240);
 
         text4.renderText(text4_,font_,color_);
-        //text4.render(660,660);
         SDL_RenderPresent(render_);
         while (true) {
         SDL_PollEvent(&event_);

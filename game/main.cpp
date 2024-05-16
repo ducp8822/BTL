@@ -135,7 +135,7 @@ void game()
 	while(checkCollision(cat,food))
 	{
 	    Mix_PlayChannel(-1,food_music,0);
-	    bullet_count+=2;
+	    bullet_count+=1;
 	    food.renew();
 	    point+=2;
 	}
@@ -260,7 +260,7 @@ int main(int argc, char *argv[])
                     const char* highScore_=s3.c_str();
 
                     SDL_RenderPresent(gRenderer);
-					SDL_Delay(5);
+					SDL_Delay(8);
 					if (GAME_OVER == true )
                     {
                         Mix_PauseMusic();
