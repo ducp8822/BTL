@@ -24,16 +24,16 @@
 <https://github.com/ducp8822/BTL/blob/main/cat_dodge.mp4>
 ### | Các điểm nổi bật trong Game
 
-Sử dụng vật lý xử lý va chạm, bằng tính toán vật lý khiến cho khi người chơi nhấn chuột càng xa nhân vật thì vận tốc di chuyển càng nhanh.
+- Sử dụng vật lý xử lý va chạm, bằng tính toán vật lý khiến cho khi người chơi nhấn chuột càng xa nhân vật thì vận tốc di chuyển càng nhanh.
 
-Xử lý va chạm, xử lý khi nhặt thức ăn, sinh ngẫu nhiên quái, sử dụng góc quay để khẩu súng gắn liền với mèo.
+- Xử lý va chạm, xử lý khi nhặt thức ăn, sinh ngẫu nhiên quái, sử dụng góc quay để khẩu súng gắn liền với mèo.
 
-Game có giao diện menu, hình ảnh mèo bắt mắt, đồ họa tự thiết kế, sinh động bắt mắt người chơi, âm thanh chân thật
+- Game có giao diện menu, hình ảnh mèo bắt mắt, đồ họa tự thiết kế, sinh động bắt mắt người chơi, âm thanh chân thật
 
 ### | Ngưỡng điểm mong muốn: `9-10`
-Có tất cả yếu tố barem điểm trước (code tự viết, đồ họa tự thiết kế, thuật toán ngoài chương trình ... )
+- Có tất cả yếu tố barem điểm trước (code tự viết, đồ họa tự thiết kế, thuật toán ngoài chương trình ... )
 
-Tự học và xử lý: hình ảnh, âm thanh, nhạc nền, texture, text, ... bằng thư viện khác của SDL2 như SDL2_image, SDL2_mixer, SDL2_ttf.
+- Tự học và xử lý: hình ảnh, âm thanh, nhạc nền, texture, text, ... bằng thư viện khác của SDL2 như SDL2_image, SDL2_mixer, SDL2_ttf.
 
 ### | Tài liệu tham khảo
 - Từ tài liệu cô Châu
