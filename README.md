@@ -6,7 +6,6 @@
 ![example](logo.png)
 
 ### **Chủ đề game:** `Dodge`
-```
 Người chơi di chuyển con mèo bằng cách nhấp chuột để sử dụng súng, dùng cơ chế giật của súng di chuyển theo hướng ngược lại với hướng bấm chuột.
 
 Người chơi có số lượng đạn nhất định sau mỗi khoảng thời gian trễ nhất định sẽ được nạp.
@@ -20,7 +19,6 @@ Quái vật sẽ xuất hiện ngẫu nhiên từ trên trời xuống, người
 
 Mục tiêu của người chơi là ăn thức ăn, ăn rương, né các quái vật giành được số điểm cao nhất có thể.
 
-```
 
 ### Demo game
 <https://github.com/ducp8822/BTL/blob/main/cat_dodge.mp4>
