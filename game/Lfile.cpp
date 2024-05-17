@@ -230,6 +230,7 @@ void close()
 	score.free();
 	on.free();
 	off.free();
+
 	dog1.free();
 	dog2.free();
 	treasure.free();

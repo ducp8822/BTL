@@ -22,6 +22,7 @@ public:
 
     void showHowToPlay(SDL_Renderer* render_);
     bool Show(SDL_Renderer* render_,const char* text1_,const char* text2_, const char* text3_,const char* text4_,TTF_Font *font_,SDL_Color color_);
+    void free();
 
 };
 

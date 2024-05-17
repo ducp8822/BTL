@@ -20,7 +20,6 @@ void Menu::showHowToPlay(SDL_Renderer* render_)
         "images/how_to_play1.png",
         "images/how_to_play2.png"
     };
-    int totalImages = 2;  // Tổng số hình ảnh
     int currentImageIndex = 0;  // Chỉ mục của hình ảnh hiện tại
 
     LTexture return_;
@@ -117,7 +116,6 @@ bool Menu:: Show(SDL_Renderer* render_,const char* text1_,const char* text2_, co
                  return 1;
                  break;
             case SDL_MOUSEMOTION:
-                cerr<<x<<" "<<y<<endl;
                 if(x>=400 && x<=860 && y>=475 && y<=575 )
                 {
 
@@ -171,6 +169,7 @@ bool Menu:: Show(SDL_Renderer* render_,const char* text1_,const char* text2_, co
                     anh.loadFromFile("images/2.png");
                     anh.render(0, 0);
                     on.render(1295, 10);
+                    text3.render(390,240);
                     title1.loadFromFile("images/title.png");
                     title1.render(406, 330);
                     title1.render(406, 480);
@@ -202,6 +201,14 @@ bool Menu:: Show(SDL_Renderer* render_,const char* text1_,const char* text2_, co
                 break;
         }
     }
-
-
+}
+void Menu::free()
+{
+    text1.free();
+    text2.free();
+    text3.free();
+    text4.free();
+    anh.free();
+    title1.free();
+    title2.free();
 }

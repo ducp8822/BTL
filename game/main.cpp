@@ -13,6 +13,7 @@ bool press_mouse=false;
 double angle_arrow;
 int point=0;
 int highScore=0;
+int startTime;
 Menu menu;
 SDL_Color color={205,100,0,255};
 
@@ -58,13 +59,14 @@ void initialize()
     point=0;
     treasure_armor = 3;
     bullet_count=3;
+    startTime = SDL_GetTicks();
 
 
     cat.setPos((SCREEN_WIDTH - cat.getWidth()) / 2, (SCREEN_HEIGHT - cat.getHeight()) / 2);
 	cat.setVelocity(0, 0);
 	cat.loadFromFile("images/cat.png");
 	dog1.setVelocity(0, 1);
-	dog2.setVelocity(0, 1);
+	dog2.setVelocity(0, (SDL_GetTicks()-startTime)/6000 +1);
 	dog1.setPos(rand() % (SCREEN_WIDTH - dog1.getWidth()), -dog1.getHeight());
 	dog2.setPos(rand() % (SCREEN_WIDTH - dog2.getWidth()), -dog2.getHeight());
 	while (abs(dog1.getX() - dog2.getX()) < MIN_DISTANCE_BETWEEN_DOGS) {
@@ -112,8 +114,13 @@ void game()
 		}
 		else
 		{
-			cat.setVelocity(-cat.getXVelocity(), -cat.getYVelocity());
-			treasure_armor--;
+			 int tmpvelX = 0, tmpvelY = 0;
+        if (-cat.getXVelocity() < 0) tmpvelX = -1;
+        if (-cat.getXVelocity() > 0) tmpvelX = 1;
+        if (-cat.getYVelocity() < 0) tmpvelY = -1;
+        if (-cat.getYVelocity() > 0) tmpvelY = 1;
+        cat.setVelocity(-cat.getXVelocity() + tmpvelX, -cat.getYVelocity() + tmpvelY); // Đảo ngược hướng đi của mèo
+        treasure_armor--;
 		}
 	}
 
@@ -239,8 +246,8 @@ int main(int argc, char *argv[])
                             if (bullet_count > 0)
                             {
 
-									int push_x = -(x_mouse - cat.getX()) / 45 + cat.getXVelocity();
-									int push_y = -(y_mouse - cat.getY()) / 45 + cat.getYVelocity();
+									int push_x = -(x_mouse - cat.getX())/70  + cat.getXVelocity();
+									int push_y = -(y_mouse - cat.getY())/70 + cat.getYVelocity();
 									cat.setVelocity(push_x, push_y);
 									bullet_count--;
 									press_mouse=true;
@@ -279,5 +286,6 @@ int main(int argc, char *argv[])
     }
     //Free resources and close SDL
     close();
+    menu.free();
     return 0;
 }
