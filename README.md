@@ -30,7 +30,7 @@
 
 - Game có giao diện menu, hình ảnh mèo bắt mắt, đồ họa tự thiết kế, sinh động bắt mắt người chơi, âm thanh chân thật
 
-### | Ngưỡng điểm mong muốn: `8,5+'
+### | Ngưỡng điểm mong muốn: '8,5+'
 - Có tất cả yếu tố barem điểm trước (code tự viết, đồ họa tự thiết kế, thuật toán ngoài chương trình ... )
 
 - Tự học và xử lý: hình ảnh, âm thanh, nhạc nền, texture, text, ... bằng thư viện khác của SDL2 như SDL2_image, SDL2_mixer, SDL2_ttf.
